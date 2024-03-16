@@ -1,0 +1,19 @@
+.form-box{
+  background: #000;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h2{
+  text-align: center;
+ 
+}
+.container{
+  margin-top: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
