@@ -49,13 +49,35 @@ const Form = () => {
 
     if (Object.keys(newErrors).length === 0) {
       console.log('Form submitted:', formData);
+      console.log(typeof formData.dob);
+      fetch('http://localhost:8080/save', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(formData)
+})
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json(); // Parse response body as JSON
+  })
+  .then(data => {
+    console.log('Response:', data);
+    // Handle response data
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    // Handle errors
+  });
     } else {
       setErrors(newErrors);
     }
   };
 
   return (
-    <div style={{ margin: 'auto', width: '50%', fontFamily: 'Arial, sans-serif' }} className='form-box'>
+    <div style={{ margin: 'auto', width: '50%', fontFamily: 'Arial, sans-serif', marginTop:'100px' }} className='form-box'>
       <h2>Login </h2>
       <form onSubmit={handleSubmit}>
         <div style={{ marginBottom: '1rem' }}>
